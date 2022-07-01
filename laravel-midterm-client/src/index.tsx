@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Products from "pages/Products";
+import AddingForm from "components/AddingForm";
 
 import 'styles/__app.scss';
 
@@ -15,7 +16,7 @@ const root = ReactDOM.createRoot
 root.render
 (
   <React.StrictMode>
-      <Products/>
+      <AddingForm/>
   </React.StrictMode>
 );
 
