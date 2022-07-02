@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from "axios";
 
 export default class AddingForm extends Component<any, any>
 {
@@ -6,7 +7,7 @@ export default class AddingForm extends Component<any, any>
         super(props);
 
         this.state = {
-            foodName: "",
+            name: "",
             price: -1,
             category: -1,
             image: null
@@ -22,7 +23,7 @@ export default class AddingForm extends Component<any, any>
     onChangeFoodName(event: React.FormEvent<HTMLInputElement>)
     {
         this.setState({
-            foodName: event.currentTarget.value
+            name: event.currentTarget.value
         });
     }
 
@@ -43,24 +44,26 @@ export default class AddingForm extends Component<any, any>
 
     onChangeImage(event: React.FormEvent<HTMLInputElement>)
     {
-        let data = event.currentTarget as HTMLInputElement;
-        // @ts-ignore
-        console.log(data.files[0])
         this.setState({
             // @ts-ignore
-            image: data.files[0]
+            image: event.currentTarget.files[0]
         });
     }
 
     onSubmit()
     {
-        console.log("test")
+        console.log(this.state);
+        axios.postForm('http://127.0.0.1:8000/api/foods/post', this.state)
+            .then(res => {
+                console.log(res);
+            })
     }
+
 
     render()
     {
         return (
-            <form className={"form"} action="">
+            <div className={"form"}>
                 <label htmlFor="">
                     <span>food name</span>
                     <input onChange={(event) => this.onChangeFoodName(event)} type="text"/>
@@ -80,7 +83,7 @@ export default class AddingForm extends Component<any, any>
                 <div onClick={(event) => this.onSubmit()} className={"button"}>
                     sumbit
                 </div>
-            </form>
+            </div>
         );
     }
 }

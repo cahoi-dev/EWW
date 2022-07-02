@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static where(string $string, int $category_id)
+ * @method static insert()
  */
 class Food extends Model
 {

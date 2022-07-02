@@ -17,8 +17,8 @@ class FoodRepository
         return Food::where('category_id', $category_id)->get();
     }
 
-    public static function addFood(Food $newFood): void
-    {
-
-    }
+//    public static function addFood(Food $newFood): void
+//    {
+//        $newFood->save();
+//    }
 }
